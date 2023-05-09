@@ -19,15 +19,27 @@ body {
 nav {
   background: var(--primary);
   padding: 10px 20px;
-  text-align: center;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 nav a {
+  text-decoration: none;
   color: #f2f2f2;
   margin: 10px;
-  display: inline-block;
+  display: flex;
+  justify-content: flex-end;
+  transition: all 0.3s ease 0s;
+}
+nav a:hover {
+  background-color: #f7bee2;
+  color: var(--primary);
+  padding: 5px;
+  border-radius: 3px;
 }
 nav h1 {
   color: #fff;
+  margin-right: auto;
 }
 .page {
   max-width: 1200px;

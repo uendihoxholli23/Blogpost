@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { MdDelete, MdEdit } from "react-icons/md";
 import supabase from "../config/supabaseClient";
-const Blogs = ({ dt }) => {
+
+const Blogs = ({ dt, onDelete }) => {
   const handleDelete = async () => {
     const { data, error } = await supabase
       .from("datablog")
@@ -13,6 +14,7 @@ const Blogs = ({ dt }) => {
     }
     if (data) {
       console.log(data);
+      onDelete(dt.id);
     }
   };
   return (

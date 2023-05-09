@@ -6,6 +6,12 @@ const Home = () => {
   const [fetchError, setFetchError] = useState(null);
   const [dataBlog, setDataBlog] = useState(null);
 
+  const handleDelete = (id) => {
+    setDataBlog((prevBlog) => {
+      return prevBlog.filter((blog) => blog.id !== id);
+    });
+  };
+
   useEffect(() => {
     const fetchDataBlog = async () => {
       const { data, error } = await supabase.from("datablog").select();
@@ -22,6 +28,7 @@ const Home = () => {
     };
     fetchDataBlog();
   }, []);
+
   return (
     <div className="page">
       {fetchError && <p>{fetchError}</p>}
@@ -29,7 +36,7 @@ const Home = () => {
         <div className="blogs">
           <div className="blog-grid">
             {dataBlog.map((dt) => (
-              <Blogs key={dt.id} dt={dt} />
+              <Blogs key={dt.id} dt={dt} onDelete={handleDelete} />
             ))}
           </div>
         </div>
