@@ -4,18 +4,16 @@ import supabase from "../config/supabaseClient";
 
 const Blogs = ({ dt, onDelete }) => {
   const handleDelete = async () => {
-    const { data, error } = await supabase
-      .from("datablog")
-      .delete()
-      .eq("id", dt.id);
+    const { error } = await supabase.from("datablog").delete().eq("id", dt.id);
 
     if (error) {
       console.log(error);
+      return;
     }
-    if (data) {
-      console.log(data);
-      onDelete(dt.id);
-    }
+
+    //console.log(data);
+    console.log(dt.id);
+    onDelete(dt.id);
   };
   return (
     <>
@@ -24,7 +22,7 @@ const Blogs = ({ dt, onDelete }) => {
         <p>{dt.method}</p>
         <div className="rating">{dt.rating}</div>
         <div className="buttons">
-          <Link to={"/" + dt.id}>
+          <Link to={"/admin/blog/" + dt.id} state={dt}>
             <span>
               <MdEdit />
             </span>

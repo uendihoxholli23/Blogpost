@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 //pages
 import Home from "./pages/Home";
-import Create from "./pages/Create";
-import Update from "./pages/Update";
+import CreateUpdate from "./pages/CreateUpdate";
+
 function App() {
   return (
     <>
@@ -10,12 +10,11 @@ function App() {
         <nav>
           <h1>Blogpost by Wendy</h1>
           <Link to="/">Home</Link>
-          <Link to="/create">Create new blog</Link>
+          <Link to="/admin/blog">Create new blog</Link>
         </nav>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/create" element={<Create />} />
-          <Route path="/:id" element={<Update />} />
+          <Route path="/admin/blog/:id?" element={<CreateUpdate />} />
         </Routes>
       </BrowserRouter>
     </>
